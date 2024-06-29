@@ -1,4 +1,4 @@
-package com.itacwt.phonemarket.enums;
+package com.itacwt.phonemarket.beans.enums;
 
 public enum DiscountType {
     fixed,
