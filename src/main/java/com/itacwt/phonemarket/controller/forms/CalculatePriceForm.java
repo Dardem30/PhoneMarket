@@ -1,7 +1,7 @@
 package com.itacwt.phonemarket.controller.forms;
 
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,7 +11,7 @@ public class CalculatePriceForm {
     @NotNull(message = "Product id must be provided")
     private Long product;
     @NotNull(message = "Tax Number must be provided")
-    @Min(value = 2, message = "Tax number is too short")
+    @Size(min = 2, max = 20, message = "Invalid tax number")
     private String taxNumber;
     private String couponCode;
 }

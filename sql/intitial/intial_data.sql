@@ -1,7 +1,8 @@
 INSERT INTO products (name, price)
 VALUES ('Iphone', 100),
        ('Наушники', 20),
-       ('Чехол', 10);
+       ('Чехол', 10),
+       ('MacBook', 10000000);
 INSERT INTO coupons (code, discount_type, discount_value)
 VALUES ('P10', 'percent', 10),
        ('P100', 'percent', 100);

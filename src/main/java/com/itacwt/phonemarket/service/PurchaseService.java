@@ -51,7 +51,10 @@ public class PurchaseService {
                 ));
 
         final String taxCountryPrefix = calculatePriceForm.getTaxNumber().substring(0, 2);
-        final Country country = countryRepository.findByPrefix(taxCountryPrefix);
+        final Country country = countryRepository.findByPrefix(taxCountryPrefix)
+                .orElseThrow(() -> new ResponseValidationException(
+                        String.format("No tax settings configured for [%s]", taxCountryPrefix)
+                ));
         final Pattern countryTaxNumberPattern = Pattern.compile(country.getValidationRegex(), Pattern.CASE_INSENSITIVE);
         if (!countryTaxNumberPattern.matcher(calculatePriceForm.getTaxNumber().trim()).find()) {
             throw new ResponseValidationException(String.format("Wrong taxNumber [%s]", calculatePriceForm.getTaxNumber()));
@@ -76,7 +79,7 @@ public class PurchaseService {
         purchaseRequest.setPrice(price);
         if (PaymentProcessorType.paypal.name().equals(purchaseForm.getPaymentProcessor())) {
             result = payPalPaymentProcessor.processPurchaseRequest(purchaseRequest);
-        } else if (PaymentProcessorType.stripePaymentProcessor.name().equals(purchaseForm.getPaymentProcessor())) {
+        } else if (PaymentProcessorType.stripe.name().equals(purchaseForm.getPaymentProcessor())) {
             result = stripePaymentProcessor.processPurchaseRequest(purchaseRequest);
         } else {
             throw new ResponseValidationException(String.format("No payment processor such as [%s]", purchaseForm.getPaymentProcessor()));

@@ -27,4 +27,7 @@ public class ResponseForm {
     public static ResponseForm failure(final String message) {
         return new ResponseForm(false, message, null);
     }
+    public static ResponseForm failureWithResult(final Object result) {
+        return new ResponseForm(false, null, result);
+    }
 }
