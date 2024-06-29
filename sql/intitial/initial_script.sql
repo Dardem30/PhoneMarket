@@ -20,3 +20,4 @@ CREATE TABLE countries
     validation_regex VARCHAR(500)   NOT NULL,
     tax_rate         DECIMAL(10, 2) NOT NULL
 );
+CREATE INDEX ix_prefix ON countries(prefix);
