@@ -1,4 +1,4 @@
-package com.itacwt.phonemarket.controller.forms;
+package com.itacwt.phonemarket.controller.request_forms;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;

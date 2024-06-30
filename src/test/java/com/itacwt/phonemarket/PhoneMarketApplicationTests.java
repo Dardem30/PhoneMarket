@@ -2,8 +2,8 @@ package com.itacwt.phonemarket;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.itacwt.phonemarket.beans.enums.PaymentProcessorType;
-import com.itacwt.phonemarket.controller.forms.CalculatePriceForm;
-import com.itacwt.phonemarket.controller.forms.PurchaseForm;
+import com.itacwt.phonemarket.controller.request_forms.CalculatePriceForm;
+import com.itacwt.phonemarket.controller.request_forms.PurchaseForm;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;

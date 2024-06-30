@@ -1,7 +1,7 @@
 package com.itacwt.phonemarket.controller;
 
-import com.itacwt.phonemarket.controller.forms.CalculatePriceForm;
-import com.itacwt.phonemarket.controller.forms.PurchaseForm;
+import com.itacwt.phonemarket.controller.request_forms.CalculatePriceForm;
+import com.itacwt.phonemarket.controller.request_forms.PurchaseForm;
 import com.itacwt.phonemarket.controller.response_forms.ResponseForm;
 import com.itacwt.phonemarket.service.PurchaseService;
 import jakarta.validation.Valid;
@@ -23,7 +23,7 @@ public class PurchaseController {
     }
 
     @PostMapping(value = "/purchase")
-    public ResponseForm purchase(@RequestBody final PurchaseForm purchaseForm) throws Exception {
+    public ResponseForm purchase(@Valid @RequestBody final PurchaseForm purchaseForm) throws Exception {
         return ResponseForm.successWithResult(
                 purchaseService.processPurchase(purchaseForm)
         );
