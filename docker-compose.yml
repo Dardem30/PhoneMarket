@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  app:
+    image: phone-market
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8337:8337"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/phone_market
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8
+    environment:
+      MYSQL_DATABASE: phone_market
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - db-data:/var/lib/mysql
+
+volumes:
+  db-data:
