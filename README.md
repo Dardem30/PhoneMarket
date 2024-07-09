@@ -1,5 +1,6 @@
 Simple Spring Boot REST server with connection to MySQL database which implements 2 simple requests<br>
-To start the app `docker-compose up -d`
+To start the app `docker-compose up -d`<br>
+
 ####POST /calculate-price<br>
 Content-Type:application/json<br>
 Request body:
