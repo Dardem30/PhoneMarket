@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS phone_market;
 CREATE DATABASE phone_market;
 USE phone_market;
 CREATE TABLE products

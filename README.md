@@ -1,4 +1,5 @@
-Simple Spring Boot REST server with connection to MySQL database which implements 2 simple requests:<br>
+Simple Spring Boot REST server with connection to MySQL database which implements 2 simple requests<br>
+To start the app `docker-compose up -d`
 ####POST /calculate-price<br>
 Content-Type:application/json<br>
 Request body:
@@ -6,12 +7,12 @@ Request body:
 {
   "product": 1,
   "taxNumber": "DE123456789",
-  "couponCode": "D15"
+  "couponCode": "P10"
 }
 ```
 Example response body for code 200:
 ```json
-{"success":true,"message":null,"result":109.800000}
+{"success": true, "message": null, "result": 107.100000}
 ```
 Example response body for code 400:
 ```json

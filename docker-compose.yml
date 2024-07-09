@@ -1,7 +1,9 @@
-version: '3.8'
 services:
   app:
     image: phone-market
+    depends_on:
+      db:
+        condition: service_healthy
     build:
       context: .
       dockerfile: Dockerfile
@@ -11,8 +13,6 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/phone_market
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
-    depends_on:
-      - db
 
   db:
     image: mysql:8
@@ -21,6 +21,12 @@ services:
       MYSQL_ROOT_PASSWORD: root
     volumes:
       - db-data:/var/lib/mysql
+      - ./sql/intitial:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: [ "CMD-SHELL", "mysqladmin ping -h localhost -uroot -proot || exit 1" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 volumes:
   db-data:
